@@ -2,14 +2,18 @@ services:
   - type: web
     name: ignite-tcm
     runtime: ruby
-    buildCommand: "bundle install && bundle exec rake assets:precompile"
+    buildCommand: |
+      bundle install
+      rails tailwindcss:install
+      rails tailwindcss:build
+      rails assets:precompile
     startCommand: "bundle exec rails server -p $PORT -e production"
     envVars:
       - key: RAILS_ENV
         value: production
+      - key: SECRET_KEY_BASE
+        sync: false
       - key: GMAIL_USERNAME
         sync: false
       - key: GMAIL_PASSWORD
         sync: false
-    healthCheckPath: /
-    autoDeploy: true
