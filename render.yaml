@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: ignite-tcm
+    env: ruby
+    buildCommand: bundle install
+    startCommand: bundle exec rails s
+    envVars:
+      - key: RAILS_ENV
+        value: production
+      - key: RAILS_MASTER_KEY
+        sync: false
+      - key: GMAIL_USERNAME
+        sync: false
+      - key: GMAIL_PASSWORD
+        sync: false
