@@ -6,7 +6,7 @@ class LandingController < ApplicationController
 
   def send_message
     begin
-      Rails.logger.info "Credentials test: #{Rails.application.credentials.dig(:gmail, :username)}"com
+      Rails.logger.info "Credentials test: #{Rails.application.credentials.dig(:gmail, :username)}"
       Rails.logger.info "Attempting to send email with params: #{contact_params.inspect}"
       mail = ContactMailer.contact_email(contact_params).deliver_now
       Rails.logger.info "Email sent successfully: #{mail.inspect}"
