@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="98" fill="none" stroke="white" stroke-width="4"/>
+  
+  <!-- Stylized flame/leaf combination -->
+  <path d="M100 40
+           C 120 60, 140 80, 140 120
+           C 140 150, 120 170, 100 170
+           C 80 170, 60 150, 60 120
+           C 60 80, 80 60, 100 40
+           Z" 
+        fill="none" 
+        stroke="white" 
+        stroke-width="6"/>
+  
+  <!-- Inner yin-yang inspired curves -->
+  <path d="M85 80
+           C 90 90, 90 110, 85 120
+           C 95 110, 95 90, 85 80
+           Z" 
+        fill="white"/>
+  
+  <path d="M115 80
+           C 110 90, 110 110, 115 120
+           C 105 110, 105 90, 115 80
+           Z" 
+        fill="white"/>
+  
+  <!-- Central dot -->
+  <circle cx="100" cy="100" r="5" fill="white"/>
+</svg>

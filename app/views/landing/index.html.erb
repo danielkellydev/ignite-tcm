@@ -1,119 +1,94 @@
 <!-- app/views/landing/index.html.erb -->
-<!DOCTYPE html>
-<html lang="en" class="h-full">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Ignite TCM - Traditional Chinese Herbal Medicine | Melbourne</title>
-  <meta name="description" content="Expert Chinese herbal medicine treatments in Melbourne's Northern Suburbs. Personalized care by Daniel Kelly, registered TCM herbalist.">
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
-  <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
-  <%= javascript_importmap_tags %>
+<div class="relative h-screen overflow-hidden">
+  <!-- Video Element -->
+  <%= video_tag "dispensary-video-web.mp4",
+      autoplay: true,
+      muted: true,
+      loop: true,
+      playsinline: true,
+      class: "absolute h-full w-full object-cover video-fade-in",
+      'data-video-loaded': true %>
   
-  <style>
-    /* Ensure smooth video loading transition */
-    .video-fade-in {
-      opacity: 0;
-      transition: opacity 0.5s ease-in;
-    }
-    .video-fade-in.loaded {
-      opacity: 1;
-    }
-  </style>
-</head>
+  <!-- Overlay to darken video and improve text readability -->
+  <div class="absolute inset-0 bg-black/30"></div>
 
-<body class="h-full">
-  <!-- Video Background Container -->
-  <div class="relative h-screen overflow-hidden">
-    <!-- Video Element -->
-    <%= video_tag "dispensary-video-web.mp4",
-        autoplay: true,
-        muted: true,
-        loop: true,
-        playsinline: true,
-        class: "absolute h-full w-full object-cover video-fade-in",
-        'data-video-loaded': true %>
-    
-    <!-- Overlay to darken video and improve text readability -->
-    <div class="absolute inset-0 bg-black/30"></div>
-
-    <!-- Content Overlay -->
-    <div class="relative h-full flex flex-col justify-center items-center text-white px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto">
-        <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6">
-          Ignite TCM
-        </h1>
-        <p class="text-2xl sm:text-3xl mb-12 font-light">
-          Traditional Chinese Herbal Medicine
+  <!-- Content Overlay -->
+  <div class="relative h-full flex flex-col justify-center items-center text-white px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto">
+      <!-- Logo -->
+      <%= image_tag "favicon.svg", class: "w-24 h-24 mx-auto mb-6", alt: "Ignite TCM Logo" %>
+      
+      <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6">
+        Ignite TCM
+      </h1>
+      <p class="text-2xl sm:text-3xl mb-12 font-light">
+        Traditional Chinese Herbal Medicine
+      </p>
+      <div class="space-y-6">
+        <p class="text-xl sm:text-2xl text-gray-100">
+          Daniel Kelly
         </p>
-        <div class="space-y-6">
-          <p class="text-xl sm:text-2xl text-gray-100">
-            Daniel Kelly
-          </p>
-          <p class="text-xl text-gray-200">
-            Registered Chinese Medicine Herbalist
-          </p>
-          <p class="text-xl text-gray-200">
-            Northern Suburbs, Melbourne
-          </p>
-        </div>
+        <p class="text-xl text-gray-200">
+          Registered Chinese Medicine Herbalist
+        </p>
+        <p class="text-xl text-gray-200">
+          Northern Suburbs, Melbourne
+        </p>
+      </div>
+      
+      <!-- Contact Form -->
+      <div class="mt-16 max-w-md mx-auto w-full">
+        <%= form_tag send_message_path, class: "space-y-4", data: { turbo: false } do %>
+          <div class="group">
+            <%= text_field_tag :name, nil, 
+                class: "w-full bg-transparent border border-white/30 rounded px-4 py-2 text-white placeholder-white/50 focus:border-white focus:ring-0 transition-colors",
+                placeholder: "Your Name",
+                required: true %>
+          </div>
+          
+          <div class="group">
+            <%= email_field_tag :email, nil,
+                class: "w-full bg-transparent border border-white/30 rounded px-4 py-2 text-white placeholder-white/50 focus:border-white focus:ring-0 transition-colors",
+                placeholder: "Your Email",
+                required: true %>
+          </div>
+          
+          <div class="group">
+            <%= text_area_tag :message, nil,
+                class: "w-full bg-transparent border border-white/30 rounded px-4 py-2 text-white placeholder-white/50 focus:border-white focus:ring-0 transition-colors",
+                placeholder: "Your Message",
+                rows: 4,
+                required: true %>
+          </div>
+          
+          <div class="text-center">
+            <%= submit_tag "Send Message",
+                class: "inline-block border border-white/30 rounded px-8 py-2 text-white hover:bg-white/10 transition-colors cursor-pointer" %>
+          </div>
+        <% end %>
         
-        <!-- Contact Form -->
-        <div class="mt-16 max-w-md mx-auto w-full">
-          <%= form_tag send_message_path, class: "space-y-4", data: { turbo: false } do %>
-            <div class="group">
-              <%= text_field_tag :name, nil, 
-                  class: "w-full bg-transparent border border-white/30 rounded px-4 py-2 text-white placeholder-white/50 focus:border-white focus:ring-0 transition-colors",
-                  placeholder: "Your Name",
-                  required: true %>
-            </div>
-            
-            <div class="group">
-              <%= email_field_tag :email, nil,
-                  class: "w-full bg-transparent border border-white/30 rounded px-4 py-2 text-white placeholder-white/50 focus:border-white focus:ring-0 transition-colors",
-                  placeholder: "Your Email",
-                  required: true %>
-            </div>
-            
-            <div class="group">
-              <%= text_area_tag :message, nil,
-                  class: "w-full bg-transparent border border-white/30 rounded px-4 py-2 text-white placeholder-white/50 focus:border-white focus:ring-0 transition-colors",
-                  placeholder: "Your Message",
-                  rows: 4,
-                  required: true %>
-            </div>
-            
-            <div class="text-center">
-              <%= submit_tag "Send Message",
-                  class: "inline-block border border-white/30 rounded px-8 py-2 text-white hover:bg-white/10 transition-colors cursor-pointer" %>
-            </div>
-          <% end %>
-          
-          <% if flash[:notice] %>
-            <div class="mt-4 text-center text-green-400 animate-fade-in">
-              <%= flash[:notice] %>
-            </div>
-          <% end %>
-          
-          <% if flash[:alert] %>
-            <div class="mt-4 text-center text-red-400 animate-fade-in">
-              <%= flash[:alert] %>
-            </div>
-          <% end %>
-        </div>
+        <% if flash[:notice] %>
+          <div class="mt-4 text-center text-green-400 animate-fade-in">
+            <%= flash[:notice] %>
+          </div>
+        <% end %>
+        
+        <% if flash[:alert] %>
+          <div class="mt-4 text-center text-red-400 animate-fade-in">
+            <%= flash[:alert] %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
+</div>
 
-  <script>
-    // Add smooth loading for video
-    document.addEventListener('DOMContentLoaded', () => {
-      const video = document.querySelector('video');
-      video.addEventListener('loadeddata', () => {
-        video.classList.add('loaded');
-      });
+<script>
+  // Add smooth loading for video
+  document.addEventListener('DOMContentLoaded', () => {
+    const video = document.querySelector('video');
+    video.addEventListener('loadeddata', () => {
+      video.classList.add('loaded');
     });
-  </script>
-</body>
-</html>
+  });
+</script>
