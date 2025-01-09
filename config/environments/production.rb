@@ -99,10 +99,6 @@ Rails.application.configure do
   enable_starttls_auto: true
 }
 
-config.after_initialize do
-  Rails.logger.info "SMTP Username: #{Rails.application.credentials.dig(:gmail, :username).present? ? 'Present' : 'Missing'}"
-end
-
   # Enable DNS rebinding protection and other `Host` header attacks.
   # config.hosts = [
   #   "example.com",     # Allow requests from example.com
