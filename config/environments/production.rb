@@ -90,14 +90,16 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address:              'smtp.gmail.com',
-    port:                 587,
-    domain:              'gmail.com',
-    user_name:            Rails.application.credentials.dig(:gmail, :username).tap { |u| Rails.logger.info "Username loaded: #{u.inspect}" },
-    password:             Rails.application.credentials.dig(:gmail, :password).tap { |p| Rails.logger.info "Password present: #{p.present?}" },
-    authentication:       'plain',
-    enable_starttls_auto: true
-  }
+  address:              'smtp.gmail.com',
+  port:                 587,
+  domain:              'gmail.com',
+  user_name:            Rails.application.credentials.dig(:gmail, :username),
+  password:             Rails.application.credentials.dig(:gmail, :password),
+  authentication:       'plain',
+  enable_starttls_auto: true
+}
+
+Rails.logger.info "SMTP Username: #{Rails.application.credentials.dig(:gmail, :username).present? ? 'Present' : 'Missing'}"
 
   # Enable DNS rebinding protection and other `Host` header attacks.
   # config.hosts = [
