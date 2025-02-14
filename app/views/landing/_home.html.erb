@@ -1,0 +1,35 @@
+<div class="flex flex-col justify-center items-center min-h-screen text-white px-4 sm:px-6 lg:px-8">
+  <div class="text-center max-w-3xl mx-auto">
+    <!-- Logo -->
+    <%= image_tag "favicon.svg", class: "w-24 h-24 mx-auto mb-6", alt: "Ignite TCM Logo" %>
+    
+    <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6">
+      Ignite TCM
+    </h1>
+    <p class="text-2xl sm:text-3xl mb-12 font-light">
+      Traditional Chinese Herbal Medicine
+    </p>
+    <div class="space-y-6">
+      <p class="text-xl sm:text-2xl text-gray-100">
+        Daniel Kelly
+      </p>
+      <p class="text-xl text-gray-200">
+        Registered Chinese Medicine Herbalist
+      </p>
+      <p class="text-xl text-gray-200">
+        Northern Suburbs, Melbourne
+      </p>
+    </div>
+
+    <div class="mt-12 space-y-6">
+      <div class="flex justify-center space-x-6">
+        <%= link_to "Learn More", about_path, 
+            class: "px-8 py-3 bg-white/10 hover:bg-white/20 rounded-lg transition-colors text-lg",
+            data: { turbo_frame: "content" } %>
+        <%= link_to "Book Now", "https://www.daobook.com.au/app/book/WlY0ASMyVjE",
+            class: "px-8 py-3 bg-white/20 hover:bg-white/30 rounded-lg transition-colors text-lg",
+            target: "_blank" %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>IgniteTcm</title>
+    <title>Ignite TCM - Dr. Daniel Kelly - Melbourne Chinese Medicine</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,9 +10,112 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <main>
-      <%= yield %>
+  <body class="bg-black">
+    <!-- Video Background (always present) -->
+    <%= video_tag "dispensary-video-web.mp4",
+        autoplay: true,
+        muted: true,
+        loop: true,
+        playsinline: true,
+        class: "fixed h-full w-full object-cover video-fade-in z-0",
+        'data-video-loaded': true %>
+    
+    <!-- Overlay to darken video -->
+    <div class="fixed inset-0 bg-black/30 z-10"></div>
+
+    <!-- Navigation -->
+<nav class="fixed w-full z-50 transition-all duration-300" 
+        data-controller="nav-scroll mobile-menu"
+        data-nav-scroll-target="nav">
+      <div class="container mx-auto px-4 py-4">
+        <div class="flex justify-between items-center">
+          <%= link_to root_path, 
+              class: "text-white text-2xl font-bold", 
+              data: { turbo_frame: "content" } do %>
+            <%= image_tag "favicon.svg", class: "w-8 h-8 inline-block mr-2", alt: "Ignite TCM Logo" %>
+            <span class="hidden sm:inline">Ignite TCM</span>
+          <% end %>
+          
+          <!-- Mobile menu button -->
+          <button class="sm:hidden text-white hover:text-gray-300"
+                  data-action="mobile-menu#toggle">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+
+          <!-- Desktop menu -->
+          <div class="hidden sm:flex space-x-8">
+            <%= link_to about_path,
+                class: "text-white hover:text-gray-300 transition-colors",
+                data: { turbo_frame: "content" } do %>
+              About
+            <% end %>
+            
+            <%= link_to services_path,
+                class: "text-white hover:text-gray-300 transition-colors",
+                data: { turbo_frame: "content" } do %>
+              Services
+            <% end %>
+            
+            <%= link_to contact_path,
+                class: "text-white hover:text-gray-300 transition-colors",
+                data: { turbo_frame: "content" } do %>
+              Contact
+            <% end %>
+            
+            <%= link_to "https://www.daobook.com.au/app/book/WlY0ASMyVjE",
+                class: "px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg transition-colors",
+                target: "_blank" do %>
+              Book Now
+            <% end %>
+          </div>
+        </div>
+
+        <!-- Mobile menu panel -->
+        <div class="sm:hidden hidden mt-4 space-y-4" data-mobile-menu-target="menu">
+          <%= link_to about_path,
+              class: "block text-white hover:text-gray-300 transition-colors py-2",
+              data: { turbo_frame: "content" } do %>
+            About
+          <% end %>
+          
+          <%= link_to services_path,
+              class: "block text-white hover:text-gray-300 transition-colors py-2",
+              data: { turbo_frame: "content" } do %>
+            Services
+          <% end %>
+          
+          <%= link_to contact_path,
+              class: "block text-white hover:text-gray-300 transition-colors py-2",
+              data: { turbo_frame: "content" } do %>
+            Contact
+          <% end %>
+          
+          <%= link_to "https://www.daobook.com.au/app/book/WlY0ASMyVjE",
+              class: "block text-white bg-white/10 hover:bg-white/20 rounded-lg transition-colors py-2 px-4",
+              target: "_blank" do %>
+            Book Now
+          <% end %>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main content area -->
+    <main class="relative z-20">
+      <%= turbo_frame_tag "content" do %>
+        <%= yield %>
+      <% end %>
     </main>
+
+    <script>
+      // Add smooth loading for video
+      document.addEventListener('DOMContentLoaded', () => {
+        const video = document.querySelector('video');
+        video.addEventListener('loadeddata', () => {
+          video.classList.add('loaded');
+        });
+      });
+    </script>
   </body>
 </html>
