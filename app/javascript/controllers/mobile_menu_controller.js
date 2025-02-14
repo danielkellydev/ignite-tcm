@@ -1,23 +1,37 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["menu"]
+  static targets = ["menu", "button", "hamburger", "close"]
 
-  toggle() {
-    if (this.menuTarget.classList.contains("hidden")) {
-      this.menuTarget.classList.remove("hidden")
-      // Give time for the hidden class to be removed before adding opacity
-      requestAnimationFrame(() => {
-        this.menuTarget.classList.add("opacity-100")
-        this.menuTarget.classList.remove("opacity-0")
-      })
-    } else {
-      this.menuTarget.classList.add("opacity-0")
-      this.menuTarget.classList.remove("opacity-100")
-      // Wait for transition before hiding
-      setTimeout(() => {
-        this.menuTarget.classList.add("hidden")
-      }, 150)
+  connect() {
+      console.log("Mobile menu controller connected") // Debug log
+    // Ensure menu starts hidden
+    this.menuTarget.classList.add('hidden')
+    // Close menu when clicking outside
+    document.addEventListener('click', this.handleClickOutside.bind(this))
+  }
+
+  disconnect() {
+    document.removeEventListener('click', this.handleClickOutside.bind(this))
+  }
+
+  toggle(event) {
+    console.log("Toggle clicked")
+    event.stopPropagation()
+    this.menuTarget.classList.toggle('hidden')
+    this.hamburgerTarget.classList.toggle('hidden')
+    this.closeTarget.classList.toggle('hidden')
+  }
+
+  close() {
+    this.menuTarget.classList.add('hidden')
+    this.hamburgerTarget.classList.remove('hidden')
+    this.closeTarget.classList.add('hidden')
+  }
+
+  handleClickOutside(event) {
+    if (!this.element.contains(event.target) && !this.menuTarget.classList.contains('hidden')) {
+      this.close()
     }
   }
 }

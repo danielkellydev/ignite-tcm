@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  /* Add smooth transition for mobile menu */
+  [data-mobile-menu-target="menu"] {
+    transition: opacity 0.2s ease-in-out;
+    opacity: 0;
+  }
+
+  [data-mobile-menu-target="menu"]:not(.hidden) {
+    opacity: 1;
+  }
+}
