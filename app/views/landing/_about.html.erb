@@ -12,8 +12,8 @@
       <div class="bg-white/10 backdrop-blur-md rounded-lg p-6 sm:p-8">
         <p class="text-base sm:text-lg leading-relaxed mb-4 sm:mb-6">
           As a Melbourne-based Doctor of Chinese Medicine, I bring a contemporary approach to this ancient healing system. 
-          My practice focuses on providing accessible, effective healthcare through online consultations, making it easier 
-          for busy professionals and parents to access quality care.
+          My practice focuses on providing accessible, effective healthcare tailored to individual needs, with a focus on
+          quality care and personalized attention.
         </p>
         
         <p class="text-base sm:text-lg leading-relaxed mb-4 sm:mb-6">
@@ -23,9 +23,9 @@
         </p>
 
         <p class="text-base sm:text-lg leading-relaxed">
-          Understanding the demands of family life as a father myself, I've structured my practice to offer flexible 
-          telehealth consultations. This allows me to provide consistent, high-quality care while ensuring that herbal 
-          medicines are conveniently delivered to your door.
+          Understanding the demands of everyday life, I aim to make Chinese medicine accessible and relevant. 
+          My individualized treatment plans integrate herbal formulas with lifestyle recommendations 
+          to address both symptoms and their underlying causes, promoting long-term health and wellbeing.
         </p>
       </div>
 
@@ -76,11 +76,16 @@
       </div>
 
       <div class="text-center">
+        <%= link_to "Contact Me", contact_path,
+            class: "inline-block py-3 px-8 bg-white/10 hover:bg-white/20 rounded-lg transition-colors text-base sm:text-lg",
+            data: { turbo_frame: "content" } %>
+        <%# Booking temporarily disabled
         <a href="https://www.daobook.com.au/app/book/WlY0ASMyVjE" 
            target="_blank"
            class="inline-block py-3 px-8 bg-white/10 hover:bg-white/20 rounded-lg transition-colors text-base sm:text-lg">
           Book a Consultation
         </a>
+        %>
       </div>
     </div>
   </div>

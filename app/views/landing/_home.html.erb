@@ -26,9 +26,14 @@
         <%= link_to "Learn More", about_path, 
             class: "px-8 py-3 bg-white/10 hover:bg-white/20 rounded-lg transition-colors text-lg",
             data: { turbo_frame: "content" } %>
-        <%= link_to "Book Now", "https://www.daobook.com.au/app/book/WlY0ASMyVjE",
+        <%= link_to "Contact", contact_path, 
             class: "px-8 py-3 bg-white/20 hover:bg-white/30 rounded-lg transition-colors text-lg",
-            target: "_blank" %>
+            data: { turbo_frame: "content" } %>
+        <%# Booking temporarily disabled
+        link_to "Book Now", "https://www.daobook.com.au/app/book/WlY0ASMyVjE",
+            class: "px-8 py-3 bg-white/20 hover:bg-white/30 rounded-lg transition-colors text-lg",
+            target: "_blank"
+        %>
       </div>
     </div>
   </div>
